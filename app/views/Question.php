@@ -17,12 +17,12 @@
   </h1>
 
   <button id="yesBtn"
-    class="absolute left-[40%] top-[60%] bg-white border-2 border-gray-800 px-8 py-3 font-bold text-lg rounded-xl shadow-md hover:bg-green-200 active:scale-95 transition">
+    class="absolute left-[20%] top-[60%] bg-white border-2 border-gray-800 px-8 py-3 font-bold text-lg rounded-xl shadow-md hover:bg-green-200 active:scale-95 transition">
     yes
-  </button>
+  </button><br><br><br><br>
 
   <button id="noBtn"
-    class="absolute left-[55%] top-[60%] bg-white border-2 border-gray-800 px-8 py-3 font-bold text-lg rounded-xl shadow-md cursor-pointer select-none">
+    class="absolute left-[65%] top-[60%] bg-white border-2 border-gray-800 px-8 py-3 font-bold text-lg rounded-xl shadow-md cursor-pointer select-none">
     no
   </button>
 
