@@ -3,65 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <title>Question</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- jQuery -->
   <script src="<?= base_url(); ?>/public/js/jquery.js"></script>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      font-family: "Courier New", monospace;
-      background: white;
-      overflow: hidden;
-      touch-action: none;
-    }
-
-    h1 {
-      font-size: 50px;
-      margin-bottom: 40px;
-    }
-
-    button {
-      position: absolute;
-      font-family: "Courier New", monospace;
-      padding: 10px 40px;
-      border: 2px solid black;
-      background: white;
-      font-weight: bold;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    #yesBtn {
-      left: 40%;
-      top: 60%;
-    }
-
-    #noBtn {
-      left: 55%;
-      top: 60%;
-    }
-  </style>
 </head>
-<body>
-  <h1>PEDE BANG MAGING TAYO?</h1>
-  <button id="yesBtn">yes</button>
-  <button id="noBtn">no</button>
+<body class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-pink-100 via-rose-200 to-pink-300 font-mono overflow-hidden touch-none relative">
+
+  <h1 class="text-3xl sm:text-5xl font-bold text-gray-800 mb-16 drop-shadow-md select-none">
+    PEDE BANG MAGING TAYO?
+  </h1>
+
+  <button id="yesBtn"
+    class="absolute left-[40%] top-[60%] bg-white border-2 border-gray-800 px-8 py-3 font-bold text-lg rounded-xl shadow-md hover:bg-green-200 active:scale-95 transition">
+    yes
+  </button>
+
+  <button id="noBtn"
+    class="absolute left-[55%] top-[60%] bg-white border-2 border-gray-800 px-8 py-3 font-bold text-lg rounded-xl shadow-md cursor-pointer select-none">
+    no
+  </button>
 
   <script>
     $("#yesBtn").click(function() {
-      alert("HAHAHA LOVE YOU");
+      alert("HAHAHA LOVE YOU ❤️");
     });
 
-    // The NO button instantly teleports on hover or near-hover
+    // The NO button teleports on hover or near-hover
     $("#noBtn").on("mouseenter mousemove", function() {
       moveRandom($(this));
     });
 
     $("#noBtn").on("touchstart touchmove", function(e) {
-      e.preventDefault(); // stop accidental click or scroll
+      e.preventDefault();
       moveRandom($(this));
     });
 
@@ -72,12 +48,12 @@
       const newLeft = Math.random() * bodyWidth;
       const newTop = Math.random() * bodyHeight;
 
-      // instantly move — no animation delay
       $btn.css({
         left: newLeft + "px",
         top: newTop + "px"
       });
     }
   </script>
+
 </body>
 </html>
