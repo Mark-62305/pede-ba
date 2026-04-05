@@ -13,22 +13,22 @@
 <body class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-pink-100 via-rose-200 to-pink-300 font-mono overflow-hidden touch-none relative">
 
   <h1 class="text-3xl sm:text-5xl font-bold text-gray-800 mb-16 drop-shadow-md select-none">
-    PEDE BANG MAGING TAYO?
+    SHOT ANO G?
   </h1>
 
   <button id="yesBtn"
     class="absolute left-[20%] top-[60%] bg-white border-2 border-gray-800 px-8 py-3 font-bold text-lg rounded-xl shadow-md hover:bg-green-200 active:scale-95 transition">
-    yes
+    G
   </button><br><br><br><br>
 
   <button id="noBtn"
     class="absolute left-[65%] top-[60%] bg-white border-2 border-gray-800 px-8 py-3 font-bold text-lg rounded-xl shadow-md cursor-pointer select-none">
-    no
+    PASS
   </button>
 
   <script>
     $("#yesBtn").click(function() {
-      alert("HAHAHA LOVE YOU ❤️");
+      alert("HAHAHA YOWN NAMAN PALA EH");
     });
 
     // The NO button teleports on hover or near-hover
