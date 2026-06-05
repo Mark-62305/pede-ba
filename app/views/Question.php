@@ -240,10 +240,12 @@
       <p class="subtext">Just say YES</p>
       <div class="btn-group">
         <button class="btn-yes" id="yesBtn">YES 🩷</button>
-        <button class="btn-pass" id="noBtn">PASS</button>
       </div>
     </div>
   </div>
+
+  <!-- PASS button lives at the top level so it can roam the full screen -->
+  <button class="btn-pass" id="noBtn">No</button>
 
   <!-- Win overlay -->
   <div class="win-overlay" id="winOverlay">
@@ -276,11 +278,16 @@
       launchConfetti();
     });
 
-    /* ── PASS button – teleports on hover/touch ── */
-    // Initial position (near card)
+    /* ── PASS button – starts next to YES, then teleports on hover/touch ── */
     (function positionPassBtn() {
+      // Wait for layout so we can read the YES button's position
+      const yesBtnEl = document.getElementById('yesBtn');
+      const rect = yesBtnEl.getBoundingClientRect();
       const btn = $("#noBtn");
-      btn.css({ left: "65%", top: "62%" });
+      // Place it to the right of the YES button, vertically centered with it
+      const passLeft = rect.right + 16;
+      const passTop  = rect.top + (rect.height / 2) - (btn.outerHeight() / 2);
+      btn.css({ left: passLeft + "px", top: passTop + "px" });
     })();
 
     $("#noBtn").on("mouseenter mousemove", function () {
