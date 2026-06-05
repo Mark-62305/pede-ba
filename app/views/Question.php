@@ -123,9 +123,9 @@
 
     .btn-group {
       display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.85rem;
       animation: fadeUp 0.6s 0.7s both;
     }
 
@@ -135,7 +135,8 @@
       background: linear-gradient(135deg, #ff4f8b, #e8175d);
       color: white;
       border: none;
-      padding: 0.8rem 2.4rem;
+      padding: 0.8rem 0;
+      width: 200px;
       font-family: 'Playfair Display', serif;
       font-size: 1.1rem;
       font-weight: 700;
@@ -156,13 +157,24 @@
     .btn-yes:hover  { transform: scale(1.08); box-shadow: 0 6px 28px rgba(232, 23, 93, 0.6); }
     .btn-yes:active { transform: scale(0.95); }
 
-    /* PASS button — teleports */
+    /* Invisible placeholder — reserves the No button's exact space inside the card */
+    .no-placeholder {
+      width: 200px;
+      height: 46px;
+      border-radius: 50px;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* No button — position: fixed so it can roam the full screen freely */
     .btn-pass {
       position: fixed;
+      width: 200px;
+      padding: 0.8rem 0;
+      text-align: center;
       background: rgba(255,255,255,0.75);
       color: #c0124e;
       border: 2px solid rgba(255,150,180,0.7);
-      padding: 0.8rem 2rem;
       font-family: 'Playfair Display', serif;
       font-size: 1.1rem;
       font-weight: 700;
@@ -240,11 +252,13 @@
       <p class="subtext">Just say YES</p>
       <div class="btn-group">
         <button class="btn-yes" id="yesBtn">YES 🩷</button>
+        <!-- Invisible spacer so the card reserves height for the No button -->
+        <div class="no-placeholder" id="noPlaceholder"></div>
       </div>
     </div>
   </div>
 
-  <!-- PASS button lives at the top level so it can roam the full screen -->
+  <!-- No button lives at body level so it can roam freely across the full screen -->
   <button class="btn-pass" id="noBtn">No</button>
 
   <!-- Win overlay -->
@@ -278,16 +292,15 @@
       launchConfetti();
     });
 
-    /* ── PASS button – starts next to YES, then teleports on hover/touch ── */
-    (function positionPassBtn() {
-      // Wait for layout so we can read the YES button's position
-      const yesBtnEl = document.getElementById('yesBtn');
-      const rect = yesBtnEl.getBoundingClientRect();
-      const btn = $("#noBtn");
-      // Place it to the right of the YES button, vertically centered with it
-      const passLeft = rect.right + 16;
-      const passTop  = rect.top + (rect.height / 2) - (btn.outerHeight() / 2);
-      btn.css({ left: passLeft + "px", top: passTop + "px" });
+    /* ── No button – starts over placeholder, then teleports on hover/touch ── */
+    (function positionNoBtn() {
+      const placeholder = document.getElementById('noPlaceholder');
+      const rect = placeholder.getBoundingClientRect();
+      const btn = document.getElementById('noBtn');
+      btn.style.left = rect.left + 'px';
+      btn.style.top  = rect.top  + 'px';
+      // Sync placeholder height to actual button height once rendered
+      placeholder.style.height = btn.offsetHeight + 'px';
     })();
 
     $("#noBtn").on("mouseenter mousemove", function () {
