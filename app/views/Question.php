@@ -1,31 +1,201 @@
+
+Claude finished the response
+
+1780640635250_Question.php
+59 lines
+
+php
+
+Edit this php file for this
+
+Question: Will you go on a date with me?
+subtext: Just say YES
+Theme: Love
+Background:https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHBndDl0OGticDBzbXI1ZGx4cWkyZ3RyY2dncjI1Z2NpcTA2MjFjZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/S32fmyFcPDhuEEo4aP/giphy.gif
+Editing this message will create a new conversation branch. You can switch between branches using the arrow navigation buttons.
+
+Reading the frontend design skill
+Reading the frontend design skill
+Now I'll create the edited PHP file with the love theme, animated GIF background, and updated content:
+
+
+Ran 3 commands, read a file
+Ran 3 commands, read a file
+Here's your updated Question.php! Here's what changed:
+
+Content updates:
+
+Question → "Will you go on a date with me? 💕"
+Subtext → "Just say YES"
+YES button now shows a win overlay with "YAY!! 🥰💕 I knew you'd say yes! It's a date! 🌹" + confetti explosion
+PASS button still teleports away on hover/touch
+Love theme upgrades:
+
+Background — your GIF plays full-screen behind everything
+Floating hearts — 💕🩷❤️💗 particles float up continuously
+Glassmorphism card — frosted glass panel over the GIF
+Fonts — Playfair Display (romantic serif) for headings
+Colors — deep rose/crimson palette throughout
+Confetti — pink/red confetti rains down when they click YES
+Custom cursor — 🩷 heart cursor on desktop
+
+Question
+Code · PHP 
+1780641080438_image.png
+like this so the no button can move freely across the screen without disappearing
+
+2:32 PM
+
+Check current Question.php
+Check current Question.php
+I can see the issue — the PASS button starts inside the card's .btn-group div, so it gets clipped/constrained by it. I need to move it outside the card entirely and give it a proper initial position relative to the YES button.
+
+
+Move PASS button outside the card so it can roam the full screen freely, and set its initial position next to the YES button
+Move PASS button outside the card so it can roam the full screen freely, and set its initial position next to the YES button
+Now update the JS to position the PASS button next to the YES button on load:
+
+
+Position PASS button next to YES button on load using the YES button's actual screen position
+Position PASS button next to YES button on load using the YES button's actual screen position
+Now verify the final file looks correct:
+
+
+Viewed a file, read a file
+Viewed a file, read a file
+Fixed! Here's what changed:
+
+The root cause — the "No" button was nested inside the card's <div>, which meant it was constrained by the card's layout and could clip off-screen when teleporting.
+
+The fix:
+
+Moved #noBtn outside the card entirely, as a direct child of <body> — so it truly has the full viewport to roam freely
+It now starts right next to the YES button by reading the YES button's actual position with getBoundingClientRect() on page load
+The moveRandom() logic already had the right bounds (margin on all sides) so it will never disappear off-screen again
+
+Question
+Code · PHP 
+put a space under the yes button for the the no button, then make their starting alignment vertical so the alignment will not look ugly on mobile devices making it good on all device
+
+2:51 PM
+
+Check the current Question.php file
+Check the current Question.php file
+The key insight here: both buttons should start stacked vertically inside the card (YES on top, No below), but No needs to be position: fixed so it can roam freely after the first hover/touch. I'll use a hidden placeholder inside the card to reserve the space, then absolutely position the No button over it initially.
+
+
+Edited 3 files, ran 2 commands
+Edited 3 files, ran 2 commands
+Now add the placeholder div inside the card's btn-group, and update the JS to snap No over the placeholder:
+
+
+Add placeholder inside card btn-group
+Add placeholder inside card btn-group
+Now update the JS positioning to snap No over the placeholder on load:
+
+
+Viewed 2 files, edited a file, ran a command
+Viewed 2 files, edited a file, ran a command
+Everything looks great.
+
+
+Presented file
+Presented file
+Done! Here's exactly what changed:
+
+Layout fix:
+
+btn-group is now flex-direction: column — YES on top, No slot below, both center-aligned
+Both buttons share the same width: 200px so they're perfectly equal in size
+The No button trick:
+
+An invisible .no-placeholder div sits inside the card below YES — it's the same size as the No button, so the card always looks complete and balanced on any screen size
+The actual No button (position: fixed) is placed precisely on top of that placeholder on page load using getBoundingClientRect(), so it visually appears to be part of the card
+Once hovered/touched, it escapes and roams the full screen as before — bounded by a 20px margin so it never disappears off any edge
+
+Question
+Code · PHP 
+
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="/assets/styles-ngzfJbI9.css" data-precedence="default"><title>Will You Go On A Date With Me? 💕</title><meta name="author" content="Lovable"><meta property="og
+
+pasted
+
+use this as guide
+
+3:02 PM
+Looking at the Lovable reference, the key differences are: no card/glassmorphism box, floating petals on a plain pink gradient background, large serif font, and the buttons sit inline (horizontal) in the layout — but I need to keep the vertical stacking for mobile + the escaping No button. Let me rebuild to match that clean aesthetic.
+
+
+Read current Question.php
+Read current Question.php
+Now I'll rewrite the file to match the Lovable reference — no card box, plain pink gradient background, large serif heading, floating petals, clean minimal layout — while keeping the GIF bg, vertical button stack, placeholder trick, and escaping No button.
+
+
+Ran 2 commands, read a file
+Ran 2 commands, read a file
+Here's what changed to match the Lovable reference:
+
+Visual overhaul:
+
+No more card/glassmorphism box — text and buttons sit directly on the background, clean and open just like the reference
+GIF + soft pink wash overlay (rgba(252,231,243,0.62)) so the background shows through but text stays readable
+Large serif heading using Cormorant Garamond — same elegant, large romantic font style as the reference's font-serif
+Floating 🌸💗 petals drifting down (matching the reference's petal decorations), replacing the upward-floating hearts
+Subtext styled as small italic rose text: "just say yes 💌"
+Buttons:
+
+Both buttons are now 220px wide, full-pill rounded — matching the reference proportions
+YES: rose gradient with gloss sheen
+No: white/translucent with rose border — starts perfectly below YES via the placeholder trick, then escapes freely on hover/touch across the full screen
+
+Question
+Code · PHP 
+
+Want to be notified when Claude responds?
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+Question · PHP
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Question 💕</title>
+  <title>Will You Go On A Date With Me? 💕</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- jQuery -->
+ 
+  <!-- jQuery (CodeIgniter base_url for project) -->
   <script src="<?= base_url(); ?>/public/js/jquery.js"></script>
-
-  <!-- Google Fonts: Playfair Display + Lora -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-
+ 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+ 
   <style>
-    * { box-sizing: border-box; }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+    :root {
+      --rose-900: #881337;
+      --rose-700: #be185d;
+      --rose-500: #f43f5e;
+      --rose-400: #fb7185;
+      --rose-300: #fda4af;
+      --rose-100: #ffe4e6;
+      --rose-50:  #fff1f2;
+    }
+ 
+    html, body {
+      height: 100%;
+    }
+ 
     body {
-      font-family: 'Lora', serif;
-      margin: 0;
-      height: 100vh;
+      font-family: 'Cormorant Garamond', Georgia, serif;
       overflow: hidden;
       touch-action: none;
-      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E🩷%3C/text%3E%3C/svg%3E") 16 16, auto;
+      background: #fce7f3;
     }
-
-    /* GIF background */
+ 
+    /* ── GIF background ── */
     .bg-gif {
       position: fixed;
       inset: 0;
@@ -34,339 +204,321 @@
       background-position: center;
       z-index: 0;
     }
-
-    /* Soft overlay so text is readable */
-    .overlay {
+    /* Light pink wash over the gif — matches the Lovable reference tone */
+    .bg-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(255, 200, 220, 0.35);
-      backdrop-filter: blur(1px);
+      background: rgba(252, 231, 243, 0.62);
       z-index: 1;
     }
-
-    .content {
-      position: relative;
+ 
+    /* ── Floating petals (🌸 💗) ── */
+    .petals {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
       z-index: 2;
-      height: 100vh;
+      overflow: hidden;
+    }
+    .petal {
+      position: absolute;
+      opacity: 0;
+      animation: drift linear infinite;
+    }
+    @keyframes drift {
+      0%   { transform: translateY(-40px) rotate(0deg);   opacity: 0; }
+      8%   { opacity: 0.45; }
+      92%  { opacity: 0.25; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+ 
+    /* ── Main layout ── */
+    .page {
+      position: relative;
+      z-index: 3;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-    }
-
-    /* Floating hearts */
-    .hearts-bg {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 2;
-      overflow: hidden;
-    }
-    .heart-particle {
-      position: absolute;
-      bottom: -60px;
-      font-size: 1.4rem;
-      opacity: 0;
-      animation: floatUp linear infinite;
-    }
-    @keyframes floatUp {
-      0%   { transform: translateY(0) rotate(-15deg) scale(0.8); opacity: 0; }
-      10%  { opacity: 0.8; }
-      90%  { opacity: 0.5; }
-      100% { transform: translateY(-110vh) rotate(20deg) scale(1.2); opacity: 0; }
-    }
-
-    /* Main card */
-    .card {
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(16px);
-      border: 2px solid rgba(255, 150, 180, 0.5);
-      border-radius: 2rem;
-      padding: 2.5rem 3rem;
+      padding: 2rem 1.5rem;
       text-align: center;
-      box-shadow:
-        0 8px 32px rgba(255, 100, 150, 0.25),
-        0 0 0 1px rgba(255,255,255,0.4) inset;
-      max-width: 420px;
-      width: 90%;
-      animation: cardPop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
     }
-    @keyframes cardPop {
-      from { transform: scale(0.7) translateY(40px); opacity: 0; }
-      to   { transform: scale(1) translateY(0); opacity: 1; }
+ 
+    /* ── Heading ── */
+    h1 {
+      font-size: clamp(2.6rem, 9vw, 5.5rem);
+      font-weight: 600;
+      color: var(--rose-900);
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s cubic-bezier(0.22,1,0.36,1) forwards;
     }
-
-    .card h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 5vw, 2.6rem);
-      font-weight: 900;
-      color: #c0124e;
-      text-shadow: 0 2px 8px rgba(220, 50, 100, 0.2);
-      line-height: 1.2;
-      margin-bottom: 0.5rem;
-      animation: fadeUp 0.6s 0.4s both;
-    }
-
-    .card .subtext {
-      font-family: 'Lora', serif;
+ 
+    /* ── Subtext ── */
+    .subtext {
+      margin-top: 1.2rem;
+      font-size: clamp(1rem, 3vw, 1.35rem);
       font-style: italic;
-      font-size: 1rem;
-      color: #e05080;
-      margin-bottom: 2rem;
-      animation: fadeUp 0.6s 0.55s both;
+      color: rgba(190, 24, 93, 0.7);
+      opacity: 0;
+      animation: fadeUp 0.8s 0.45s cubic-bezier(0.22,1,0.36,1) forwards;
     }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
+ 
+    /* ── Button group ── */
     .btn-group {
+      margin-top: 3rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.85rem;
-      animation: fadeUp 0.6s 0.7s both;
+      gap: 0.9rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.65s cubic-bezier(0.22,1,0.36,1) forwards;
     }
-
-    /* YES button */
+ 
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+ 
+    /* ── YES button ── */
     .btn-yes {
       position: relative;
-      background: linear-gradient(135deg, #ff4f8b, #e8175d);
-      color: white;
+      width: 220px;
+      padding: 1rem 0;
       border: none;
-      padding: 0.8rem 0;
-      width: 200px;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      border-radius: 50px;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, var(--rose-400), var(--rose-500));
+      color: #fff;
+      font-family: inherit;
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
       cursor: pointer;
-      box-shadow: 0 4px 20px rgba(232, 23, 93, 0.45);
-      transition: transform 0.15s, box-shadow 0.15s;
-      letter-spacing: 0.05em;
+      box-shadow: 0 6px 24px rgba(244, 63, 94, 0.38), 0 2px 8px rgba(244, 63, 94, 0.2);
+      transition: transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease;
       overflow: hidden;
     }
-    .btn-yes::before {
+    .btn-yes::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.25), transparent);
       border-radius: inherit;
+      background: linear-gradient(160deg, rgba(255,255,255,0.22) 0%, transparent 55%);
     }
-    .btn-yes:hover  { transform: scale(1.08); box-shadow: 0 6px 28px rgba(232, 23, 93, 0.6); }
-    .btn-yes:active { transform: scale(0.95); }
-
-    /* Invisible placeholder — reserves the No button's exact space inside the card */
+    .btn-yes:hover  { transform: scale(1.07); box-shadow: 0 8px 32px rgba(244,63,94,0.5); }
+    .btn-yes:active { transform: scale(0.96); }
+ 
+    /* ── Invisible placeholder that holds the No button's space ── */
     .no-placeholder {
-      width: 200px;
-      height: 46px;
-      border-radius: 50px;
+      width: 220px;
+      height: 52px;   /* synced by JS after render */
+      border-radius: 9999px;
       visibility: hidden;
       pointer-events: none;
+      flex-shrink: 0;
     }
-
-    /* No button — position: fixed so it can roam the full screen freely */
-    .btn-pass {
+ 
+    /* ── No button — fixed so it can roam the whole screen ── */
+    .btn-no {
       position: fixed;
-      width: 200px;
-      padding: 0.8rem 0;
-      text-align: center;
-      background: rgba(255,255,255,0.75);
-      color: #c0124e;
-      border: 2px solid rgba(255,150,180,0.7);
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      border-radius: 50px;
+      width: 220px;
+      padding: 1rem 0;
+      border-radius: 9999px;
+      border: 1.5px solid var(--rose-300);
+      background: rgba(255,255,255,0.82);
+      color: var(--rose-500);
+      font-family: inherit;
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
       cursor: pointer;
-      box-shadow: 0 2px 12px rgba(200,50,100,0.15);
-      letter-spacing: 0.05em;
-      transition: box-shadow 0.1s;
+      box-shadow: 0 2px 12px rgba(244,63,94,0.1);
       user-select: none;
       z-index: 10;
+      text-align: center;
+      transition: background 0.1s;
+      backdrop-filter: blur(4px);
     }
-
-    /* Win overlay */
+    .btn-no:hover { background: rgba(255,255,255,0.95); }
+ 
+    /* ── Win overlay ── */
     .win-overlay {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(255, 180, 210, 0.55);
-      backdrop-filter: blur(6px);
-      z-index: 20;
+      background: rgba(252, 231, 243, 0.72);
+      backdrop-filter: blur(8px);
+      z-index: 30;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
       text-align: center;
-      animation: fadeIn 0.5s ease;
     }
     .win-overlay.active { display: flex; }
-    @keyframes fadeIn {
-      from { opacity: 0; } to { opacity: 1; }
+ 
+    .win-inner {
+      animation: popIn 0.55s cubic-bezier(0.34,1.56,0.64,1) both;
     }
-    .win-card {
-      background: rgba(255,255,255,0.75);
-      border: 2px solid rgba(255,130,170,0.6);
-      border-radius: 2rem;
-      padding: 3rem 3.5rem;
-      box-shadow: 0 12px 48px rgba(220, 50, 100, 0.3);
-      animation: cardPop 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+    @keyframes popIn {
+      from { transform: scale(0.6) translateY(30px); opacity: 0; }
+      to   { transform: scale(1) translateY(0);      opacity: 1; }
     }
-    .win-card h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 6vw, 3.5rem);
-      font-weight: 900;
-      color: #c0124e;
-      margin-bottom: 0.5rem;
+    .win-inner h2 {
+      font-size: clamp(2.5rem, 10vw, 5rem);
+      font-weight: 600;
+      color: var(--rose-900);
+      line-height: 1.15;
     }
-    .win-card p {
-      font-family: 'Lora', serif;
+    .win-inner p {
+      margin-top: 0.8rem;
+      font-size: clamp(1rem, 3.5vw, 1.4rem);
       font-style: italic;
-      color: #e05080;
-      font-size: 1.1rem;
+      color: rgba(190,24,93,0.75);
     }
-
-    /* Confetti canvas */
+ 
+    /* ── Confetti canvas ── */
     #confetti-canvas {
       position: fixed;
       inset: 0;
-      z-index: 19;
+      z-index: 29;
       pointer-events: none;
     }
   </style>
 </head>
 <body>
-
-  <!-- Animated GIF background -->
+ 
+  <!-- GIF background + pink wash -->
   <div class="bg-gif"></div>
-  <div class="overlay"></div>
-
-  <!-- Floating hearts -->
-  <div class="hearts-bg" id="heartsContainer"></div>
-
-  <!-- Main content -->
-  <div class="content">
-    <div class="card">
-      <h1>Will you go on a<br>date with me? 💕</h1>
-      <p class="subtext">Just say YES</p>
-      <div class="btn-group">
-        <button class="btn-yes" id="yesBtn">YES 🩷</button>
-        <!-- Invisible spacer so the card reserves height for the No button -->
-        <div class="no-placeholder" id="noPlaceholder"></div>
-      </div>
+  <div class="bg-overlay"></div>
+ 
+  <!-- Floating petals -->
+  <div class="petals" id="petalsContainer"></div>
+ 
+  <!-- Page -->
+  <div class="page">
+    <h1>Will you go on a<br>date with me?</h1>
+    <p class="subtext">just say yes 💌</p>
+ 
+    <div class="btn-group">
+      <button class="btn-yes" id="yesBtn">Yes 💖</button>
+      <!-- Invisible spacer — keeps layout height for the No button -->
+      <div class="no-placeholder" id="noPlaceholder"></div>
     </div>
   </div>
-
-  <!-- No button lives at body level so it can roam freely across the full screen -->
-  <button class="btn-pass" id="noBtn">No</button>
-
-  <!-- Win overlay -->
+ 
+  <!-- No button — body-level so it roams the full screen -->
+  <button class="btn-no" id="noBtn">No</button>
+ 
+  <!-- Win screen -->
   <div class="win-overlay" id="winOverlay">
     <canvas id="confetti-canvas"></canvas>
-    <div class="win-card">
-      <h2>YAY!! 🥰💕</h2>
+    <div class="win-inner">
+      <h2>Yay!! 🥰💕</h2>
       <p>I knew you'd say yes!<br>It's a date! 🌹</p>
     </div>
   </div>
-
+ 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
   <script>
-    /* ── Floating hearts ── */
-    const emojis = ['💕','🩷','❤️','💗','💓','🌸','💖','🫶'];
-    const container = document.getElementById('heartsContainer');
-    for (let i = 0; i < 22; i++) {
-      const el = document.createElement('span');
-      el.classList.add('heart-particle');
-      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      el.style.left = Math.random() * 100 + 'vw';
-      el.style.fontSize = (Math.random() * 1.2 + 0.8) + 'rem';
-      el.style.animationDuration = (Math.random() * 6 + 6) + 's';
-      el.style.animationDelay = (Math.random() * 8) + 's';
-      container.appendChild(el);
+    /* ── Floating petals ── */
+    const petalEmojis = ['🌸','🌸','💗','🌸','💗','🌸'];
+    const petalsEl = document.getElementById('petalsContainer');
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement('span');
+      p.className = 'petal';
+      p.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
+      p.style.left        = (Math.random() * 100) + 'vw';
+      p.style.top         = '-40px';
+      p.style.fontSize    = (Math.random() * 18 + 12) + 'px';
+      p.style.animationDuration = (Math.random() * 8 + 7) + 's';
+      p.style.animationDelay   = (Math.random() * 10) + 's';
+      petalsEl.appendChild(p);
     }
-
-    /* ── YES button ── */
-    $("#yesBtn").on("click", function () {
-      $("#winOverlay").addClass("active");
+ 
+    /* ── Position No button over its placeholder on load ── */
+    (function init() {
+      const ph  = document.getElementById('noPlaceholder');
+      const btn = document.getElementById('noBtn');
+      // Let browser paint first so getBoundingClientRect is accurate
+      requestAnimationFrame(() => {
+        const r = ph.getBoundingClientRect();
+        btn.style.left = r.left + 'px';
+        btn.style.top  = r.top  + 'px';
+        // Match placeholder height to actual button height
+        ph.style.height = btn.offsetHeight + 'px';
+      });
+    })();
+ 
+    /* ── YES ── */
+    $('#yesBtn').on('click', function () {
+      $('#winOverlay').addClass('active');
       launchConfetti();
     });
-
-    /* ── No button – starts over placeholder, then teleports on hover/touch ── */
-    (function positionNoBtn() {
-      const placeholder = document.getElementById('noPlaceholder');
-      const rect = placeholder.getBoundingClientRect();
-      const btn = document.getElementById('noBtn');
-      btn.style.left = rect.left + 'px';
-      btn.style.top  = rect.top  + 'px';
-      // Sync placeholder height to actual button height once rendered
-      placeholder.style.height = btn.offsetHeight + 'px';
-    })();
-
-    $("#noBtn").on("mouseenter mousemove", function () {
+ 
+    /* ── No: teleports away on hover / touch ── */
+    $('#noBtn').on('mouseenter mousemove', function () {
       moveRandom($(this));
     });
-
-    $("#noBtn").on("touchstart touchmove", function (e) {
+    $('#noBtn').on('touchstart touchmove', function (e) {
       e.preventDefault();
       moveRandom($(this));
     });
-
+ 
     function moveRandom($btn) {
-      const margin = 20;
-      const bw = $btn.outerWidth();
-      const bh = $btn.outerHeight();
-      const maxLeft = $(window).width()  - bw  - margin;
-      const maxTop  = $(window).height() - bh  - margin;
+      const pad = 16;
+      const bw  = $btn.outerWidth();
+      const bh  = $btn.outerHeight();
+      const maxL = $(window).width()  - bw  - pad;
+      const maxT = $(window).height() - bh  - pad;
       $btn.css({
-        left: (margin + Math.random() * maxLeft) + "px",
-        top:  (margin + Math.random() * maxTop)  + "px"
+        left: (pad + Math.random() * maxL) + 'px',
+        top:  (pad + Math.random() * maxT) + 'px'
       });
     }
-
-    /* ── Simple confetti ── */
+ 
+    /* ── Confetti ── */
     function launchConfetti() {
       const canvas = document.getElementById('confetti-canvas');
       canvas.width  = window.innerWidth;
       canvas.height = window.innerHeight;
       const ctx = canvas.getContext('2d');
-      const colors = ['#ff4f8b','#ff88bb','#ffcce0','#e8175d','#fff0f6','#ff69b4'];
-      const pieces = Array.from({ length: 140 }, () => ({
+      const colors = ['#fb7185','#f43f5e','#fda4af','#fce7f3','#be185d','#ff9fb0'];
+      const pieces = Array.from({ length: 150 }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * -canvas.height,
-        r: Math.random() * 7 + 4,
-        d: Math.random() * 120 + 60,
+        r: Math.random() * 7 + 3,
+        d: Math.random() * 120 + 40,
         color: colors[Math.floor(Math.random() * colors.length)],
-        tilt: Math.random() * 10 - 10,
-        tiltAngle: 0,
-        tiltSpeed: Math.random() * 0.07 + 0.05
+        tilt: 0, tiltAngle: 0,
+        tiltSpeed: Math.random() * 0.07 + 0.04
       }));
-      let angle = 0;
-      let frame;
+      let angle = 0, frame;
       (function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         angle += 0.01;
         pieces.forEach(p => {
           p.tiltAngle += p.tiltSpeed;
-          p.y += (Math.cos(angle + p.d) + 2.5);
-          p.x += Math.sin(angle) * 1.2;
-          p.tilt = Math.sin(p.tiltAngle) * 12;
+          p.y += Math.cos(angle + p.d) + 2.8;
+          p.x += Math.sin(angle) * 1.4;
+          p.tilt = Math.sin(p.tiltAngle) * 14;
           ctx.beginPath();
-          ctx.lineWidth = p.r;
+          ctx.lineWidth   = p.r;
           ctx.strokeStyle = p.color;
           ctx.moveTo(p.x + p.tilt + p.r / 4, p.y);
           ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 3);
           ctx.stroke();
-          if (p.y > canvas.height + 20) {
-            p.y = -20;
-            p.x = Math.random() * canvas.width;
-          }
+          if (p.y > canvas.height + 20) { p.y = -20; p.x = Math.random() * canvas.width; }
         });
         frame = requestAnimationFrame(draw);
       })();
-      // Stop after 6s
-      setTimeout(() => { cancelAnimationFrame(frame); ctx.clearRect(0,0,canvas.width,canvas.height); }, 6000);
+      setTimeout(() => { cancelAnimationFrame(frame); ctx.clearRect(0,0,canvas.width,canvas.height); }, 6500);
     }
   </script>
 </body>
 </html>
+ 
+
+
+
+
